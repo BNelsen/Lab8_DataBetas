@@ -1,0 +1,24 @@
+---
+title: "Lab8"
+author: "Brandon Nelsen"
+date: "10/14/2019"
+output: html_document
+---
+```{r}
+library(tidyverse)
+```
+
+```{r}
+#Tanganyika Data Set
+Tanganyika <- read_csv("East Africa lake data (2).csv")
+Tanganyika$X3 = NULL
+Tanganyika$X6 = NULL
+Tanganyika$X7 = NULL 
+Tanganyika$X10 = NULL
+Tanganyika$X11 = NULL
+Tanganyika$X12 = NULL
+
+TidyTanganyika <- Tanganyika
+TidyTanganyika %>% unite('Year', 'Year AD')
+```
+
