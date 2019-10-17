@@ -1,16 +1,45 @@
 ---
 title: "Lab8"
-author: "Brandon Nelsen"
+author: "Brandon Nelsen, Tanner Ball, Burke Parent, Drew Hoffman, David Washburn"
 date: "10/14/2019"
 output: html_document
 ---
 ```{r}
 library(tidyverse)
+library(readxl)
+```
+
+***Team Portion***
+
+1. Who is hiring you?
+
+answer here
+
+2. Overall Team Question, why it's important, and why those reasons are important
+
+answer here
+
+3. A brief description of the dataset you want to use
+
+answer here
+
+4. A series of individual questions and why they're important
+
+answer here
+
+5. Each team member should produce a different visualization of the East Africa Lake Data. Create plots that show the data over time for Challa, Tanganyika, Malawi, CRU and MAM rainfall, and VOI rainfall.
+
+```{r}
+# Challa Data Set - Tanner
+Challa <- read_xlsx("East Africa lake data.xlsx", sheet = "Challa")
+Challa <- filter(Challa, !is.na(`Age AD`))
+Challa <- transmute(Challa,year=`Age AD`, number=`varve number`, thickness=as.double(`varve thickness`),dark.layer=as.double(`dark layer`), light.layer=as.double(`light layer`))
+Challa
 ```
 
 ```{r}
 #Tanganyika Data Set
-Tanganyika <- read_csv("East Africa lake data (2).csv")
+Tanganyika <- read_xlsx("East Africa lake data.xlsx", sheet = "Tanganyika")
 Tanganyika$X3 = NULL
 Tanganyika$X6 = NULL
 Tanganyika$X7 = NULL 
