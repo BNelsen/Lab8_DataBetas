@@ -82,11 +82,11 @@ Malawi Data Set
 
 ```{r, echo=FALSE}
 #Malawi Data Set - Drew
-malawi <- read_csv("East Africa Lake Data:Malawi.csv")
+malawi <- read_xlsx("East Africa Lake Data.xlsx", sheet="Malawi")
 names(malawi)
-malawi <- filter(malawi,!is.na(`BSi MAR (mgSiO2/cm2y)_1`))
+malawi <- filter(malawi,!is.na(`BSi MAR (mgSiO2/cm2y)...8`))
 malawi <- select(malawi,6:8)
-malawi <- transmute(malawi,ybp=`Age, cal ybp`,year=`Age (calender)_1`,bsi=`BSi MAR (mgSiO2/cm2y)_1`)
+malawi <- transmute(malawi,ybp=`Age, cal ybp`,year=`Age (calender)...7`,bsi=`BSi MAR (mgSiO2/cm2y)...8`)
 malawi$ybp <- parse_double(malawi$ybp)
 
 ggplot(data = malawi, aes(x = year, y = bsi)) + geom_point() + geom_smooth() + xlab("Year") + ylab("BSI") + ggtitle("Historic Malawi Rainfall Data")
