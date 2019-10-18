@@ -50,4 +50,13 @@ Tanganyika$X12 = NULL
 TidyTanganyika <- Tanganyika
 TidyTanganyika %>% unite('Year', 'Year AD')
 ```
+```{r}
+#naivasha Data Set - David
+Naivasha <- read_xlsx("East Africa Lake Data.xlsx", sheet=5)
+    Year = col_date(format="%Y")
+Naivasha$Year <- round(Naivasha$Year)
+Naivasha <- rename(Naivasha,LakeDepth=`Lake Depth`)
 
+ggplot(Naivasha, aes(Year, LakeDepth)) +
+  geom_point()
+``` 
