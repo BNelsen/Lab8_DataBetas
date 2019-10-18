@@ -54,6 +54,8 @@ Challa <- read_xlsx("East Africa lake data.xlsx", sheet = "Challa")
 Challa <- filter(Challa, !is.na(`Age AD`))
 Challa <- transmute(Challa,year=`Age AD`, number=`varve number`, thickness=as.double(`varve thickness`),dark.layer=as.double(`dark layer`), light.layer=as.double(`light layer`))
 Challa
+ChallaSince1800 <- filter(Challa, year >= 1800) %>% arrange(order(year))
+ggplot(data=ChallaSince1800, aes(x=year, y=thickness)) + geom_point() + geom_smooth() + ggtitle('Thickness Since 1800')
 ```
 
 ```{r}
@@ -69,6 +71,7 @@ Tanganyika$X12 = NULL
 TidyTanganyika <- Tanganyika
 TidyTanganyika %>% unite('Year', 'Year AD')
 ```
+
 ```{r}
 #naivasha Data Set - David
 Naivasha <- read_xlsx("East Africa Lake Data.xlsx", sheet=5)
