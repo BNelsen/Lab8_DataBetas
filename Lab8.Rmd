@@ -107,3 +107,35 @@ GPCC.ond <- GPCC %>% filter(season == "OND")
 ggplot(data = GPCC.mam, aes(x = Year, y = rainfall)) + geom_point() + geom_smooth(se=0) + xlab("Year") + ylab("Rainfall") + ggtitle("Rainfall Data for MAM season")
 ggplot(data = GPCC.ond, aes(x = Year, y = rainfall)) + geom_point() + geom_smooth(se=0) + xlab("Year") + ylab("Rainfall") + ggtitle("Rainfall Data for OND season")
 ```
+
+VOI Data Set
+
+```{r}
+VOI <- read_xlsx("East Africa lake data.xlsx", sheet = "VOI rainfall station data")
+VOI <- gather(VOI,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec,key=month,value=rainfall)
+VOI <- select(VOI, "Year", "month", "rainfall")
+
+VOI1904 <- filter(VOI, Year == 1904)
+sum(VOI1904$rainfall) # =6430
+
+VOI1927 <- filter(VOI, Year == 1927)
+sum(VOI1927$rainfall) # =12035
+
+VOI1950 <- filter(VOI, Year == 1950)
+sum(VOI1950$rainfall) # =3450
+
+VOI1973 <- filter(VOI, Year == 1973)
+sum(VOI1973$rainfall) # =4689
+
+VOI1996 <- filter(VOI, Year == 1996)
+sum(VOI1996$rainfall, na.rm = TRUE) # =4780
+
+NewVOI <- data.frame("Year" = c(1904, 1927, 1950, 1973, 1996), 
+                 "Rainfall" = c(6430, 12035, 3450, 4689, 4780))
+
+ggplot(NewVOI, aes(Year, Rainfall)) +
+  geom_point() +geom_smooth(se = 0) +
+  ggtitle("VOI Rainfall Over Time")
+
+
+```
