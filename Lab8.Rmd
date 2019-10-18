@@ -4,7 +4,7 @@ author: "Brandon Nelsen, Tanner Ball, Burke Parent, Drew Hoffman, David Washburn
 date: "10/14/2019"
 output: html_document
 ---
-```{r}
+```{r, echo=FALSE}
 library(tidyverse)
 library(readxl)
 ```
@@ -48,7 +48,9 @@ The traditional designated hitter is a player that provides great value at the p
 
 **5. Individual visualizations of the East Africa Lake Data. Plots for Challa, Tanganyika, Malawi, CRU and MAM rainfall, and VOI rainfall.**
 
-```{r}
+Challa Data Set
+
+```{r, echo=FALSE}
 # Challa Data Set - Tanner
 Challa <- read_xlsx("East Africa lake data.xlsx", sheet = "Challa")
 Challa <- filter(Challa, !is.na(`Age AD`))
@@ -58,7 +60,9 @@ ChallaSince1800 <- filter(Challa, year >= 1800) %>% arrange(order(year))
 ggplot(data=ChallaSince1800, aes(x=year, y=thickness)) + geom_point() + geom_smooth() + ggtitle('Thickness Since 1800')
 ```
 
-```{r}
+Tanganyika Data Set
+
+```{r, echo=FALSE}
 #Tanganyika Data Set - Drew
 Tang <- read_csv("Tanganyika.csv")
 temp1 <- select(Tang,1:2)
@@ -74,19 +78,9 @@ Tang.tidy <- full_join(temp1,temp2) %>% full_join(temp3) %>% arrange(desc(year))
 ggplot(data = Tang.tidy, aes(x = year, y = charcoal)) + geom_point() + geom_smooth() + xlab("Year") + ylab("Charcoal") + ggtitle("Historic Tanganyika Charcoal Data")
 ```
 
+Malawi Data Set
 
-```{r}
-#naivasha Data Set - David
-Naivasha <- read_xlsx("East Africa Lake Data.xlsx", sheet=5)
-    Year = col_date(format="%Y")
-Naivasha$Year <- round(Naivasha$Year)
-Naivasha <- rename(Naivasha,LakeDepth=`Lake Depth`)
-
-ggplot(Naivasha, aes(Year, LakeDepth)) +
-  geom_point()
-``` 
-
-```{r}
+```{r, echo=FALSE}
 #Malawi Data Set - Drew
 malawi <- read_csv("East Africa Lake Data:Malawi.csv")
 names(malawi)
@@ -98,7 +92,9 @@ malawi$ybp <- parse_double(malawi$ybp)
 ggplot(data = malawi, aes(x = year, y = bsi)) + geom_point() + geom_smooth() + xlab("Year") + ylab("BSI") + ggtitle("Historic Malawi Rainfall Data")
 ```
 
-```{r}
+CRU and GPCC Data Set
+
+```{r, echo=FALSE}
 #CRU GPCC Data Set - Drew
 GPCC <- read_csv("CRU and GPCC.csv")
 names(GPCC)
@@ -108,8 +104,6 @@ GPCC <- separate(GPCC.new,type,into=c("dataset","season"),sep=" ",extra="drop")
 GPCC.mam <- GPCC %>% filter(season == "MAM")
 GPCC.ond <- GPCC %>% filter(season == "OND")
 
-ggplot(data = GPCC.mam, aes(x = Year, y = rainfall)) + geom_point() + geom_smooth(se=0)
-ggplot(data = GPCC.ond, aes(x = Year, y = rainfall)) + geom_point() + geom_smooth(se=0)
-
-
+ggplot(data = GPCC.mam, aes(x = Year, y = rainfall)) + geom_point() + geom_smooth(se=0) + xlab("Year") + ylab("Rainfall") + ggtitle("Rainfall Data for MAM season")
+ggplot(data = GPCC.ond, aes(x = Year, y = rainfall)) + geom_point() + geom_smooth(se=0) + xlab("Year") + ylab("Rainfall") + ggtitle("Rainfall Data for OND season")
 ```
