@@ -1,5 +1,5 @@
 ---
-title: "Lab8"
+title: "Lab 8: Data Science to Solve Problems and Answer Questions, part 1"
 author: "Brandon Nelsen, Tanner Ball, Burke Parent, Drew Hoffman, David Washburn"
 date: "10/14/2019"
 output: html_document
@@ -25,28 +25,28 @@ Baseball-reference.com is a great resource for baseball data, as it is a hub for
 
 **4. Individual questions**
 
-Are there differences in the hitting statistics of pitchers themselves between the National League and American League?
+*Are there differences in the hitting statistics of pitchers themselves between the National League and American League?*
 
 This question is important because while American League pitchers usually do not have to hit, if they are playing an away game at a National League park then they have to, because of house rules. It would be interesting to see if pitchers from both leagues are poor hitters or if there is a tangible difference. 
 
-Do the different player roles affect roster creation?
+*Do the different player roles affect roster creation?*
 
 On an MLB team, there are 25 roster spots for the players. It is up to the team to decide what quantity of pitchers and hitters to carry. Because there is a position that only exists in one of the leagues, there may be a different prevailing theory for how many of each player type to carry on roster. 
 
-How does the extra hitter in the lineup affect pitching statistics?
+*How does the extra hitter in the lineup affect pitching statistics?*
 
 Because American League pitchers are facing 9 professional hitters as opposed to 8 and a pitcher in the National League, it may alter statistics of pitchers from either side. If an American league pitcher gave up 3 runs per game and a National League pitcher gave up 2 runs per game, it becomes more difficult to determine the better player becasue of different circumstances and environment.
 
-How does the designated hitter affect game strategy?
+*How does the designated hitter affect game strategy?*
 
 Due to the poor hitting of pitchers, they will often be asked to perform a "sacrifice bunt". The idea is that the pitcher can essentially give himself up as an out by bunting the ball a few feet in order to advance the runners on base. It is a strategic choice to trade what would have already been a likely out from the pitcher into moving your runners closer to home. This is one obvious tactical difference, but there may be other hidden strategies that teams can take advantage of.
 
-Is the American League more friendly to heavier players?
+*Is the American League more friendly to heavier players?*
 
 The traditional designated hitter is a player that provides great value at the plate, but their defense is either severely lacking or not needed on the team. The stereotypical body type of this individual is an overweight player who doesn't want to worry about being a detriment on the field. We can analyze height and weight data of players in both leagues to determine if the American League teams have a higher likelihood of signing or trading for heavier players, as they have a role that fits their skillset.
 
 
-**5. Each team member should produce a different visualization of the East Africa Lake Data. Create plots that show the data over time for Challa, Tanganyika, Malawi, CRU and MAM rainfall, and VOI rainfall.**
+**5. Individual visualizations of the East Africa Lake Data. Plots for Challa, Tanganyika, Malawi, CRU and MAM rainfall, and VOI rainfall.**
 
 ```{r}
 # Challa Data Set - Tanner
